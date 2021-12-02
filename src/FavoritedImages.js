@@ -21,7 +21,7 @@ class FavoritedImages extends Component {
 export default FavoritedImages
 
 const InnerGrid = styled.div`
-    flex: 30%;
+    flex: 18%;
     padding: 0 4px;
     img {
         margin-top: 8px;

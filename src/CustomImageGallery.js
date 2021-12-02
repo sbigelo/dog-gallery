@@ -12,22 +12,17 @@ class CustomImageGallery extends Component {
 
     handleFavorite = (e) => {
         this.props.favoritePicture(e.target.getAttribute('src'))
-        // console.log(e.target.getAttribute('src'))
     }
 
     render() {
-        const myStyle = {
-            width: "200px", 
-            height: "200px", 
-        }
         let allPhotos
-        this.props.imgURL.endsWith('mp4') ? allPhotos = <InnerGrid onClick={this.handleFavorite}><ReactPlayer className='react-player' volume='0' playing='true' loop='true' url={this.props.imgURL}  /> </InnerGrid> : allPhotos = <InnerGrid onClick={this.handleFavorite}><img type="video/jpeg" src={this.props.imgURL}></img></InnerGrid>
+        this.props.imgURL.endsWith('mp4') ? allPhotos = <InnerGrid onClick={this.handleFavorite}><ReactPlayer className='react-player' volume='0' playing='true' loop='true' url={this.props.imgURL} /> </InnerGrid> : allPhotos = <InnerGrid onClick={this.handleFavorite}><img type="video/jpeg" src={this.props.imgURL}></img></InnerGrid>
         
 
         return(
-            <InnerGrid>
+            <Grid>
                     {allPhotos}
-            </InnerGrid>
+            </Grid>
         )
     }
 }
@@ -37,6 +32,8 @@ export default CustomImageGallery
 const InnerGrid = styled.div`
     flex: 18%;
     padding: 0 4px;
+    border: 3px solid #000000;
+    margin: 2px;
     img {
         vertical-align: middle;
         max-width: 200px;
@@ -44,14 +41,18 @@ const InnerGrid = styled.div`
         max-height: 200px;
         min-height: 199px;
     };
-     div {
-        border: 4px solid #E6E6E6;
+     div { 
         vertical-align: middle;
         max-width: 200px;
         min-width: 199px;
         max-height: 200px;
         min-height: 199px;
     }
+
+`
+
+const Grid = styled.div`
+
 `
 
   
