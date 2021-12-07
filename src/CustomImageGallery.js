@@ -6,10 +6,6 @@ import ReactPlayer from 'react-player'
 
 class CustomImageGallery extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     handleFavorite = (e) => {
         this.props.favoritePicture(e.target.getAttribute('src'))
     }
@@ -31,22 +27,22 @@ export default CustomImageGallery
 
 const InnerGrid = styled.div`
     flex: 18%;
-    padding: 0 4px;
+    padding: 0 0px;
     border: 3px solid #000000;
     margin: 2px;
     img {
         vertical-align: middle;
         max-width: 200px;
-        min-width: 199px;
+        min-width: 200px;
         max-height: 200px;
-        min-height: 199px;
+        min-height: 200px;
     };
      div { 
         vertical-align: middle;
         max-width: 200px;
-        min-width: 199px;
+        min-width: 200px;
         max-height: 200px;
-        min-height: 199px;
+        min-height: 200px;
     }
 
 `
