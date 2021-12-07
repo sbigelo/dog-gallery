@@ -2,14 +2,30 @@ import React, {Component} from 'react'
 import CustomImageGallery from './CustomImageGallery'
 import styled from 'styled-components'
 import FavoritedImages from './FavoritedImages'
+// import { Routes, Route } from 'react-router-dom'
+// import Home from './Home'
+// import Login from './Login'
+// import Logout from './Logout'
+import GoogleLogin from "react-google-login";
+import { GoogleLogout } from "react-google-login";
 
 class App extends Component {
 
     state = {
       dog: [], 
-      favoritedImages: []
+      favoritedImages: [],
+      userDetails: {},
+      isUserLoggedIn: false
     }
  
+  responseGoogle = response => {
+    this.setState({ userDetails: response.profileObj, isUserLoggedIn: true });
+  };
+
+  logout = () => {
+    this.setState({ isUserLoggedIn: false })
+  };
+
  componentDidMount() {
      const num = 10
       for(let i = 0; i < num; i++) { 
@@ -53,18 +69,69 @@ class App extends Component {
 
       return (
           <div>
+          {this.state.isUserLoggedIn && (<div> 
+            <GoogleLogout
+              render={renderProps => (
+                <button
+                  className="logout-button"
+                  onClick={renderProps.onClick}
+                >Log Out</button>
+              )}
+              onLogoutSuccess={this.logout}
+            />
+            <div className="image">
+              <img src={this.state.userDetails.imageUrl} />
+            </div>
+            <div className="name">
+              Welcome {this.state.userDetails.givenName}{" "}
+              {this.state.userDetails.familyName}
+            </div>
+            <div className="email"><i>{this.state.userDetails.email}</i></div>
             <AppHeader>Dog Gallery</AppHeader>
             <TopText>Click on any picture to put it into your favorite collection!</TopText>
             <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
             <OuterGrid>{dogLoad}</OuterGrid>
             <TopText>Favorites:</TopText>
           <OuterGrid>{allFavoritedPics}</OuterGrid>
+            </div>)}
+          {!this.state.isUserLoggedIn && ( 
+            <GoogleLogin 
+              clientId='696908995235-ao2l0oj9d8espfkfm45aucej8jno3ur8.apps.googleusercontent.com'
+              render={renderProps => (
+                <LogInButton
+                  onClick={renderProps.onClick}
+                  disabled={renderProps.disabled}
+                >Log in with Google</LogInButton>
+              )}
+              onSuccess={this.responseGoogle}
+              onFailure={this.responseGoogle}
+            />
+         )} 
           </div>
   )
   }
 }
 
 export default App;
+
+const LogInButton = styled.button`
+  position: fixed;
+  left: 38%;
+  top: 33%;
+  color: #fff;
+  background-color: #0000FF;
+  border-radius: 4px;   
+  padding:12px 12px;  
+  border: 1px solid #0000FF;
+  width:25%;
+  font-size:18px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  &:hover {
+    background: #71b406;
+    border-color: #71b406;
+  }
+`
 
 const TopText = styled.h1`
 font-size: 25px;
