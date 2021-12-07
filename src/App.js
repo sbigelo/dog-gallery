@@ -28,7 +28,7 @@ class App extends Component {
   };
 
  componentDidMount() {
-     const num = 10
+     const num = 12
       for(let i = 0; i < num; i++) { 
       fetch('https://random.dog/woof.json')
       .then(resp => resp.json())
@@ -42,7 +42,7 @@ class App extends Component {
     this.setState({
       dog: []
     })
-    const num = 10
+    const num = 12
     for (let i = 0; i < num; i++) {
       fetch('https://random.dog/woof.json')
         .then(resp => resp.json())
@@ -80,18 +80,16 @@ class App extends Component {
               )}
               onLogoutSuccess={this.logout}
             />
-            <div className="image">
-              <img src={this.state.userDetails.imageUrl} />
-            </div>
-            <div className="name">
+            <WelcomingHeader>
               Welcome {this.state.userDetails.givenName}{" "}
               {this.state.userDetails.familyName}
-            </div>
-            <div className="email"><i>{this.state.userDetails.email}</i></div>
+            </WelcomingHeader>
+            <WelcomingHeader><i>{this.state.userDetails.email}</i></WelcomingHeader>
             <AppHeader>Dog Gallery</AppHeader>
             <TopText>Click on any picture to put it into your favorite collection!</TopText>
             <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
             <OuterGrid>{dogLoad}</OuterGrid>
+            <hr size="8" width="100%" color="black"/>  
             <TopText>Favorites:</TopText>
           <OuterGrid>{allFavoritedPics}</OuterGrid>
             </div>)}
@@ -117,6 +115,10 @@ class App extends Component {
 }
 
 export default App;
+
+const WelcomingHeader = styled.div`
+text-align: center;
+`
 
 const LogInButton = styled.button`
   position: fixed;
@@ -176,7 +178,7 @@ const LogInBackground = styled.div`
   left: 0; 
   min-width: 100%;
   min-height: 100%;
-  background-color: #D3D3D3;
+
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;

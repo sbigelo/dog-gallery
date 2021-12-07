@@ -17,7 +17,7 @@ class CustomImageGallery extends Component {
 
         return(
             <Grid>
-                    {allPhotos}
+                {allPhotos}
             </Grid>
         )
     }
