@@ -4,15 +4,16 @@ import styled from "styled-components"
 
 class FavoritedImages extends Component {
 
+handleDelete = (e) => {
+    this.props.favoriteRemove(e.target.getAttribute('src'))
+}
+
    render() {
-    //    const uniquePics = this.props.pics.filter((x, i, a) => a.indexOf(x) == i)
-    //    console.log(uniquePics)
        let card
-       this.props.pic.endsWith('mp4') ? card = <div className='innerGrid' ><ReactPlayer volume='0' playing='true' loop='true' url={this.props.pic} style='' /> </div> : card = <div className='innerGrid'><img type="video/jpeg" src={this.props.pic}></img></div>
+       this.props.pic.endsWith('mp4') ? card = <div onClick={this.handleDelete} className='innerGrid' ><ReactPlayer volume='0' playing='true' loop='true' url={this.props.pic} style='' /> </div> : card = <div onClick={this.handleDelete} className='innerGrid'><img type="video/jpeg" src={this.props.pic}></img></div>
     return(
         <InnerGrid>
             {card}
-            
         </InnerGrid>
     )
    }
@@ -27,16 +28,16 @@ const InnerGrid = styled.div`
         margin-top: 8px;
         vertical-align: middle;
         max-width: 200px;
-        min-width: 199px;
+        min-width: 200px;
         max-height: 200px;
-        min-height: 199px;
+        min-height: 200px;
     }
     div {
         margin-top: 8px;
         vertical-align: middle;
         max-width: 200px;
-        min-width: 199px;
+        min-width: 200px;
         max-height: 200px;
-        min-height: 199px;
+        min-height: 200px;
     }
 `

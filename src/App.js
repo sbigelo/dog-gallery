@@ -61,12 +61,19 @@ class App extends Component {
       alert(`Can't add that twice!`)
     }
   }
+
+  handleRemoveFavorite = (e) => {
+    console.log(e)
+    this.setState({
+      favoritedImages: this.state.favoritedImages.filter(favorite => favorite !== e)
+    })
+  }
  
 
   render() {
     let dogLoad = this.state.dog.map(doggo => <CustomImageGallery  imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
 
-  let allFavoritedPics = this.state.favoritedImages.map(pic => <FavoritedImages pic={pic} />)
+    let allFavoritedPics = this.state.favoritedImages.map(pic => <FavoritedImages pic={pic} favoriteRemove={this.handleRemoveFavorite} />)
 
       return (
           <div>
@@ -91,6 +98,7 @@ class App extends Component {
             <OuterGrid>{dogLoad}</OuterGrid>
             <hr size="8" width="100%" color="black"/>  
             <TopText>Favorites:</TopText>
+            <h3>Click on any image to remove it</h3>
           <OuterGrid>{allFavoritedPics}</OuterGrid>
             </div>)}
           {!this.state.isUserLoggedIn && ( 
@@ -123,7 +131,7 @@ text-align: center;
 const LogInButton = styled.button`
   position: fixed;
   left: 38%;
-  top: 30%;
+  top: 26%;
   color: #fff;
   background-color: #0000FF;
   border-radius: 4px;   
@@ -143,7 +151,7 @@ const LogInButton = styled.button`
 
 const TopText = styled.h1`
   font-size: 25px;
-  text-align: center;
+ 
 `
 
 const OuterGrid = styled.div`
