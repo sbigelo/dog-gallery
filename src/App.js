@@ -21,6 +21,7 @@ class App extends Component {
   };
 
   logout = () => {
+    alert("Successfully Logged Out")
     this.setState({ isUserLoggedIn: false })
   };
 
