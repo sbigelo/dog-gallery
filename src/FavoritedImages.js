@@ -8,13 +8,18 @@ handleDelete = (e) => {
     this.props.favoriteRemove(e.target.getAttribute('src'))
 }
 
+
+
+// let allPhotos
+// this.props.imgURL.endsWith('mp4') ? allPhotos = <InnerGrid onClick={this.handleFavorite}><ReactPlayer className='react-player' volume='0' playing='true' loop='true' url={this.props.imgURL} /> </InnerGrid> : allPhotos = <InnerGrid onClick={this.handleFavorite}><img type="video/jpeg" src={this.props.imgURL}></img></InnerGrid>
+
    render() {
        let card
-       this.props.pic.endsWith('mp4') ? card = <div onClick={this.handleDelete} className='innerGrid' ><ReactPlayer volume='0' playing='true' loop='true' url={this.props.pic} style='' /> </div> : card = <div onClick={this.handleDelete} className='innerGrid'><img type="video/jpeg" src={this.props.pic}></img></div>
+       this.props.pic.endsWith('mp4') ? card = <InnerGrid onClick={this.handleDelete} className='innerGrid' ><ReactPlayer volume='0' playing='true' loop='true' url={this.props.pic} style='' /> </InnerGrid> : card = <InnerGrid onClick={this.handleDelete} className='innerGrid'><img type="video/jpeg" src={this.props.pic}></img></InnerGrid>
     return(
-        <InnerGrid>
+        <div>
             {card}
-        </InnerGrid>
+        </div>
     )
    }
 }
@@ -23,9 +28,10 @@ export default FavoritedImages
 
 const InnerGrid = styled.div`
     flex: 18%;
-    padding: 0 4px;
+    padding: 0 0px;
+    border: 3px solid #000000;
+    margin: 2px;
     img {
-        margin-top: 8px;
         vertical-align: middle;
         max-width: 200px;
         min-width: 200px;
@@ -33,7 +39,6 @@ const InnerGrid = styled.div`
         min-height: 200px;
     }
     div {
-        margin-top: 8px;
         vertical-align: middle;
         max-width: 200px;
         min-width: 200px;
@@ -41,3 +46,4 @@ const InnerGrid = styled.div`
         min-height: 200px;
     }
 `
+

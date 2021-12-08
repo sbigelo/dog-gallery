@@ -3,9 +3,6 @@ import CustomImageGallery from './CustomImageGallery'
 import styled from 'styled-components'
 import FavoritedImages from './FavoritedImages'
 // import { Routes, Route } from 'react-router-dom'
-// import Home from './Home'
-// import Login from './Login'
-// import Logout from './Logout'
 import GoogleLogin from "react-google-login";
 import { GoogleLogout } from "react-google-login";
 
@@ -87,12 +84,12 @@ class App extends Component {
               )}
               onLogoutSuccess={this.logout}
             />
+            <AppHeader>Dog Gallery</AppHeader>
             <WelcomingHeader>
               Welcome {this.state.userDetails.givenName}{" "}
               {this.state.userDetails.familyName}
             </WelcomingHeader>
             <WelcomingHeader><i>{this.state.userDetails.email}</i></WelcomingHeader>
-            <AppHeader>Dog Gallery</AppHeader>
             <TopText>Click on any picture to put it into your favorite collection!</TopText>
             <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
             <OuterGrid>{dogLoad}</OuterGrid>
@@ -125,7 +122,7 @@ class App extends Component {
 export default App;
 
 const WelcomingHeader = styled.div`
-text-align: center;
+text-align: left;
 `
 
 const LogOutButton = styled.button`
@@ -137,7 +134,7 @@ const LogOutButton = styled.button`
   padding: 12px 12px;  
   border: 1px solid #0000FF;
   width: 10%;
-  min-width: 10%;
+  min-width: 100px;
   max-width: 200px;
   font-size: 18px;
   cursor: pointer;
@@ -180,8 +177,22 @@ const OuterGrid = styled.div`
   padding: 25px;
 `
 const LoadMoreDogsButton = styled.button`
-  margin: 0 auto;
+  position: relative;
+  left: 43%;
+  top: 25.5%;
   display: block;
+  min-width: 120px;
+  color: #fff;
+  background-color: #0000FF;
+  border-radius: 4px;   
+  padding:12px 12px;  
+  border: 1px solid #0000FF;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  &:hover {
+    background: #71b406;
+    border-color: #71b406;
+  }
 `
 const AppHeader = styled.h1`
   text-align: center;

@@ -13,16 +13,13 @@ class CustomImageGallery extends Component {
     render() {
         let allPhotos
         this.props.imgURL.endsWith('mp4') ? allPhotos = <InnerGrid onClick={this.handleFavorite}><ReactPlayer className='react-player' volume='0' playing='true' loop='true' url={this.props.imgURL} /> </InnerGrid> : allPhotos = <InnerGrid onClick={this.handleFavorite}><img type="video/jpeg" src={this.props.imgURL}></img></InnerGrid>
-        
-
         return(
-            <Grid>
+            <div>
                 {allPhotos}
-            </Grid>
+            </div>
         )
     }
 }
-
 export default CustomImageGallery
 
 const InnerGrid = styled.div`
@@ -47,8 +44,4 @@ const InnerGrid = styled.div`
 
 `
 
-const Grid = styled.div`
 
-`
-
-  
