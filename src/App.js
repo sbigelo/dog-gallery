@@ -80,10 +80,10 @@ class App extends Component {
           {this.state.isUserLoggedIn && (<div> 
             <GoogleLogout
               render={renderProps => (
-                <button
+                <LogOutButton
                   className="logout-button"
                   onClick={renderProps.onClick}
-                >Log Out</button>
+                >Log Out</LogOutButton>
               )}
               onLogoutSuccess={this.logout}
             />
@@ -128,6 +128,26 @@ const WelcomingHeader = styled.div`
 text-align: center;
 `
 
+const LogOutButton = styled.button`
+  position: fixed;  
+  right: 1%;
+  color: #fff;
+  background-color: #0000FF;
+  border-radius: 4px;   
+  padding: 12px 12px;  
+  border: 1px solid #0000FF;
+  width: 10%;
+  min-width: 10%;
+  max-width: 200px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  &:hover {
+    background: #71b406;
+    border-color: #71b406;
+  }
+`
+
 const LogInButton = styled.button`
   position: fixed;
   left: 38%;
@@ -139,7 +159,7 @@ const LogInButton = styled.button`
   border: 1px solid #0000FF;
   width:20%;
   min-width: 20%;
-  max-widht200px;
+  max-width: 200px;
   font-size:18px;
   cursor: pointer;
   transition: ease-in-out 0.2s;
