@@ -75,7 +75,11 @@ class App extends Component {
 
       return (
           <div>
-          {this.state.isUserLoggedIn && (<div> 
+          {this.state.isUserLoggedIn && (<div> <WelcomingHeader1>
+            Welcome {this.state.userDetails.givenName}{" "}
+            {this.state.userDetails.familyName}
+          </WelcomingHeader1>
+            <WelcomingHeader2><i>{this.state.userDetails.email}</i></WelcomingHeader2>
             <GoogleLogout
               render={renderProps => (
                 <LogOutButton
@@ -85,19 +89,17 @@ class App extends Component {
               )}
               onLogoutSuccess={this.logout}
             />
-            <AppHeader>Dog Gallery</AppHeader>
-            <WelcomingHeader>
-              Welcome {this.state.userDetails.givenName}{" "}
-              {this.state.userDetails.familyName}
-            </WelcomingHeader>
-            <WelcomingHeader><i>{this.state.userDetails.email}</i></WelcomingHeader>
-            <TopText>Click on any picture to put it into your favorite collection!</TopText>
-            <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
-            <OuterGrid>{dogLoad}</OuterGrid>
-            <hr size="8" width="100%" color="black"/>  
-            <TopText>Favorites:</TopText>
-            <h3>Click on any image to remove it</h3>
-          <OuterGrid>{allFavoritedPics}</OuterGrid>
+            <HeaderBackground>
+              <AppHeader>Dog Gallery</AppHeader>
+              <HeaderText>Click on any picture to put it into your favorite collection!</HeaderText>
+            </HeaderBackground>  
+              <LoadMoreDogsButton onClick={this.handleClick}>Load    More Dogs!</LoadMoreDogsButton>
+                <OuterGrid>{dogLoad}</OuterGrid>
+              <FavoriteBackground>
+                <TopText>Favorites:</TopText>
+                <FavoriteText>Click on any image to remove it</FavoriteText>
+                <OuterGrid>{allFavoritedPics}</OuterGrid>
+              </FavoriteBackground>
             </div>)}
           {!this.state.isUserLoggedIn && ( 
             <LogInBackground>
@@ -122,13 +124,41 @@ class App extends Component {
 
 export default App;
 
-const WelcomingHeader = styled.div`
-text-align: left;
+const HeaderBackground = styled.div`
+  background-color: #458a94;
+  display: block;
+`
+
+const HeaderText = styled.h2`
+  color: white;
+  padding: 25px;
+  
+`
+
+const FavoriteText = styled.h3`
+  color: white;
+  padding: 0px 0px 0px 25px;
+`
+
+const FavoriteBackground = styled.div`
+  display: block;
+  background-color: #458a94;
+  margin-bottom: 15px;
+`
+
+const WelcomingHeader1 = styled.div`
+  text-align: right;
+  top: 6%;
+`
+const WelcomingHeader2 = styled.div`
+  text-align: right;
+  top: 8%;
 `
 
 const LogOutButton = styled.button`
-  position: fixed;  
-  right: 1%;
+  position: absolute;  
+  right: 10px;
+  top: 70px;
   color: #fff;
   background-color: #0000FF;
   border-radius: 4px;   
@@ -169,7 +199,8 @@ const LogInButton = styled.button`
 
 const TopText = styled.h1`
   font-size: 25px;
- 
+  color: white;
+  padding: 25px 25px 0px 5px;
 `
 
 const OuterGrid = styled.div`
@@ -182,7 +213,7 @@ const LoadMoreDogsButton = styled.button`
   left: 43%;
   top: 25.5%;
   display: block;
-  min-width: 120px;
+  min-width: 150px;
   color: #fff;
   background-color: #0000FF;
   border-radius: 4px;   
@@ -196,8 +227,10 @@ const LoadMoreDogsButton = styled.button`
   }
 `
 const AppHeader = styled.h1`
-  text-align: center;
+  text-align: left;
   font-size: 50px;
+  margin: 25px;
+  color: white;
 `
 
 const LoginPageAppHeader = styled.div`
@@ -218,7 +251,6 @@ const LogInBackground = styled.div`
   left: 0; 
   min-width: 100%;
   min-height: 100%;
-
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
