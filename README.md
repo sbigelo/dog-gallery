@@ -1,5 +1,5 @@
 
-![alt text](https://github.com/sbigelo/dog-gallery/public/DogWelcomePage.png?raw=true)
+<p> <img src="https://ibb.co/Q8sRmsm"></p>
 
 # 🐕  Dog Gallery... now with cats 🐈
 
