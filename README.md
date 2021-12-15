@@ -1,4 +1,4 @@
-
+![text](https://imgur.com/a/KiqZ2gC)
 # 🐕  Dog Gallery... now with cats 🐈
 
 Love pictures and videos of dogs and cats? This is the perfect application for you!
