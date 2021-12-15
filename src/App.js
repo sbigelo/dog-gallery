@@ -80,7 +80,6 @@ class App extends Component {
   }
 
   handleRemoveFavorite = (e) => {
-    console.log(e)
     this.setState({
       favoritedImages: this.state.favoritedImages.filter(favorite => favorite !== e)
     })
@@ -117,8 +116,8 @@ class App extends Component {
               <SubAppHeader>...Now With Cats!</SubAppHeader>
               <HeaderText>Click on any picture to put it into your favorite collection!</HeaderText>
             </HeaderBackground>  
-              <LoadMoreDogsButton onClick={this.handleClick}>Load    More Dogs!</LoadMoreDogsButton>
-              <button onClick={this.handleLoadCats} >Load Cats</button>
+              <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
+              <LoadCatsButton onClick={this.handleLoadCats} >Load Cats</LoadCatsButton>
                 <OuterGrid>{dogLoad}</OuterGrid>
                 <OuterGrid>{catLoad}</OuterGrid>
               <FavoriteBackground>
@@ -149,6 +148,25 @@ class App extends Component {
 }
 
 export default App;
+
+const LoadCatsButton = styled.button`
+  position: relative;
+  left: 43%;
+  top: 29.5%;
+  display: block;
+  min-width: 150px;
+  border-radius: 4px;   
+  padding: 12px 12px;  
+  border: 1px solid #ff9900;
+  background: #ff9900;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  margin: 5px 0 0 0;
+  &:hover {
+    background: #ff0000;
+    border-color: #ff0000;
+  }
+`
 
 const SubAppHeader = styled.h3`
   color: white;
