@@ -1,6 +1,4 @@
 
-![text](../public/DogWelcomePage.png)
-
 # 🐕  Dog Gallery... now with cats 🐈
 
 Love pcitures and videos of dogs and cats? This is the perfect application for you!
