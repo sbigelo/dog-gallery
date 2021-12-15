@@ -13,7 +13,8 @@ class App extends Component {
       dog: [], 
       favoritedImages: [],
       userDetails: {},
-      isUserLoggedIn: false
+      isUserLoggedIn: false,
+      cat: []
     }
  
   responseGoogle = response => {
@@ -36,9 +37,27 @@ class App extends Component {
     }
   }
 
+  handleLoadCats = () => {
+    const URL = 'https://cataas.com/'
+    const num = 12
+    this.setState({
+      dog: [],
+      cat: []
+    })
+    for (let i = 0; i < num; i++) {
+      fetch(URL + 'cat?json=true')
+      .then(resp => resp.json())
+      .then(data => this.setState({
+        cat: [...this.state.cat, data]
+      }))
+    }
+  }
+  
+ 
   handleClick = () => {
     this.setState({
-      dog: []
+      dog: [],
+      cat: []
     })
     const num = 12
     for (let i = 0; i < num; i++) {
@@ -66,12 +85,16 @@ class App extends Component {
       favoritedImages: this.state.favoritedImages.filter(favorite => favorite !== e)
     })
   }
+
+
  
 
   render() {
     let dogLoad = this.state.dog.map(doggo => <CustomImageGallery  imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
 
     let allFavoritedPics = this.state.favoritedImages.map(pic => <FavoritedImages pic={pic} favoriteRemove={this.handleRemoveFavorite} />)
+
+    let catLoad = this.state.cat.map(cats => <CustomImageGallery catimgURL={cats.url} favoritePicture={this.handleFavorite} />)
 
       return (
           <div>
@@ -91,10 +114,13 @@ class App extends Component {
             />
             <HeaderBackground>
               <AppHeader>Dog Gallery</AppHeader>
+              <SubAppHeader>...Now With Cats!</SubAppHeader>
               <HeaderText>Click on any picture to put it into your favorite collection!</HeaderText>
             </HeaderBackground>  
               <LoadMoreDogsButton onClick={this.handleClick}>Load    More Dogs!</LoadMoreDogsButton>
+              <button onClick={this.handleLoadCats} >Load Cats</button>
                 <OuterGrid>{dogLoad}</OuterGrid>
+                <OuterGrid>{catLoad}</OuterGrid>
               <FavoriteBackground>
                 <TopText>Favorites:</TopText>
                 <FavoriteText>Click on any image to remove it</FavoriteText>
@@ -123,6 +149,11 @@ class App extends Component {
 }
 
 export default App;
+
+const SubAppHeader = styled.h3`
+  color: white;
+  padding: 0 0 0 25px;
+`
 
 const HeaderBackground = styled.div`
   background-color: #458a94;

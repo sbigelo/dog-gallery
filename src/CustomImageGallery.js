@@ -11,11 +11,15 @@ class CustomImageGallery extends Component {
     }
 
     render() {
-        let allPhotos
-        this.props.imgURL.endsWith('mp4') ? allPhotos = <InnerGrid onClick={this.handleFavorite}><ReactPlayer className='react-player' volume='0' playing='true' loop='true' url={this.props.imgURL} /> </InnerGrid> : allPhotos = <InnerGrid onClick={this.handleFavorite}><img type="video/jpeg" src={this.props.imgURL}></img></InnerGrid>
+        const catBegginingURL = 'https://cataas.com/'
+        console.log(catBegginingURL + this.props.catimgURL)
+        let catPhotos = this.props.catimgURL ? <InnerGrid onClick={this.handleFavorite}><img src={catBegginingURL + this.props.catimgURL}></img></InnerGrid> : null
+        let dogPhotos
+        if (this.props.imgURL) { this.props.imgURL.endsWith('mp4') ? dogPhotos = <InnerGrid onClick={this.handleFavorite}><ReactPlayer className='react-player' volume='0' playing='true' loop='true' url={this.props.imgURL} /> </InnerGrid> : dogPhotos = <InnerGrid onClick={this.handleFavorite}><img type="video/jpeg" src={this.props.imgURL}></img></InnerGrid> }
         return(
             <div>
-                {allPhotos}
+                {dogPhotos}
+                {catPhotos}
             </div>
         )
     }
