@@ -1,5 +1,5 @@
 
-<p> <img src="https://ibb.co/Q8sRmsm"></p>
+![text](../public/DogWelcomePage.png)
 
 # 🐕  Dog Gallery... now with cats 🐈
 
