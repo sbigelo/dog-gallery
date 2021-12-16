@@ -95,6 +95,7 @@ class App extends Component {
 
     let catLoad = this.state.cat.map(cats => <CustomImageGallery catimgURL={cats.url} favoritePicture={this.handleFavorite} />)
 
+    let favoriteCount = this.state.favoritedImages.length > 0 ? this.state.favoritedImages.length == 1 ? <TopText>You have {this.state.favoritedImages.length} favorite</TopText> : <TopText>You have {this.state.favoritedImages.length} favorites</TopText> : <TopText>No favorites yet</TopText>
       return (
           <div>
           {this.state.isUserLoggedIn && (<div> <WelcomingHeader1>
@@ -121,7 +122,7 @@ class App extends Component {
                 <OuterGrid>{dogLoad}</OuterGrid>
                 <OuterGrid>{catLoad}</OuterGrid>
               <FavoriteBackground>
-                <TopText>Favorites:</TopText>
+                {favoriteCount}
                 <FavoriteText>Click on any image to remove it</FavoriteText>
                 <OuterGrid>{allFavoritedPics}</OuterGrid>
               </FavoriteBackground>
