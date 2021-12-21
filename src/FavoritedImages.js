@@ -8,11 +8,6 @@ handleDelete = (e) => {
     this.props.favoriteRemove(e.target.getAttribute('src'))
 }
 
-
-
-// let allPhotos
-// this.props.imgURL.endsWith('mp4') ? allPhotos = <InnerGrid onClick={this.handleFavorite}><ReactPlayer className='react-player' volume='0' playing='true' loop='true' url={this.props.imgURL} /> </InnerGrid> : allPhotos = <InnerGrid onClick={this.handleFavorite}><img type="video/jpeg" src={this.props.imgURL}></img></InnerGrid>
-
    render() {
        let card
        this.props.pic.endsWith('mp4') ? card = <InnerGrid onClick={this.handleDelete} className='innerGrid' ><ReactPlayer volume='0' playing='true' loop='true' url={this.props.pic} style='' /> </InnerGrid> : card = <InnerGrid onClick={this.handleDelete} className='innerGrid'><img type="video/jpeg" src={this.props.pic}></img></InnerGrid>
