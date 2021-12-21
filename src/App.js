@@ -97,6 +97,8 @@ class App extends Component {
 
     let favoriteCount = this.state.favoritedImages.length > 0 ? this.state.favoritedImages.length == 1 ? <TopText>You have {this.state.favoritedImages.length} favorite</TopText> : <TopText>You have {this.state.favoritedImages.length} favorites</TopText> : <TopText>No favorites yet</TopText>
 
+    let clickOnToRemoveText = this.state.favoritedImages.length > 0 ? <FavoriteText>Click on any image to remove it</FavoriteText> : null
+
       return (
           <div>
           {this.state.isUserLoggedIn && (<div> <WelcomingHeader1>
@@ -124,7 +126,7 @@ class App extends Component {
                 <OuterGrid>{catLoad}</OuterGrid>
               <FavoriteBackground>
                 {favoriteCount}
-                <FavoriteText>Click on any image to remove it</FavoriteText>
+                {clickOnToRemoveText}
                 <OuterGrid>{allFavoritedPics}</OuterGrid>
               </FavoriteBackground>
             <Footer><a href="https://github.com/sbigelo/dog-gallery" target="_blank">Github</a></Footer>
@@ -154,11 +156,7 @@ export default App;
 
 const Footer = styled.div`
   margin: 50px 0 0 0;
-  bottom: 4%;
-  right: 4%;
   background: #ff9900;
-  display: block;
-  min-width: 150px;
   border-radius: 4px; 
   border: 1px solid #ff9900;
   a {
