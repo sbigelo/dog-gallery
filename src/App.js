@@ -14,7 +14,8 @@ class App extends Component {
       favoritedImages: [],
       userDetails: {},
       isUserLoggedIn: false,
-      cat: []
+      cat: [],
+      afterLoadCatsText: 'Load Cats'
     }
  
   responseGoogle = response => {
@@ -42,7 +43,8 @@ class App extends Component {
     const num = 12
     this.setState({
       dog: [],
-      cat: []
+      cat: [],
+      afterLoadCatsText: 'Load More Cats'
     })
     for (let i = 0; i < num; i++) {
       fetch(URL + 'cat?json=true')
@@ -121,7 +123,7 @@ class App extends Component {
               <HeaderText>Click on any picture to put it into your favorite collection!</HeaderText>
             </HeaderBackground>  
               <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
-              <LoadCatsButton onClick={this.handleLoadCats} >Load Cats</LoadCatsButton>
+              <LoadCatsButton onClick={this.handleLoadCats} >{this.state.afterLoadCatsText}</LoadCatsButton>
                 <OuterGrid>{dogLoad}</OuterGrid>
                 <OuterGrid>{catLoad}</OuterGrid>
               <FavoriteBackground>
