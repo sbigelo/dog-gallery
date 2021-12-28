@@ -169,9 +169,9 @@ const Footer = styled.div`
 
 const LoadCatsButton = styled.button`
   position: relative;
-  left: 43%;
-  top: 29.5%;
-  display: block;
+  left: 39%;
+  top: 28%;
+  display: inline;
   min-width: 150px;
   border-radius: 4px;   
   padding: 12px 12px;  
@@ -192,14 +192,14 @@ const SubAppHeader = styled.h3`
 `
 
 const HeaderBackground = styled.div`
-  background-color: #458a94;
-  display: block;
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 `
 
 const HeaderText = styled.h2`
   color: white;
   padding: 25px;
-  
+  max-width: 250px;
 `
 
 const FavoriteText = styled.h3`
@@ -208,18 +208,19 @@ const FavoriteText = styled.h3`
 `
 
 const FavoriteBackground = styled.div`
-  display: block;
-  background-color: #458a94;
-  margin-bottom: 15px;
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 `
 
-const WelcomingHeader1 = styled.div`
-  text-align: right;
-  top: 6%;
+const WelcomingHeader1 = styled.p`
+  right: 1%;
+  top: 13%;
+  position: absolute;
 `
-const WelcomingHeader2 = styled.div`
-  text-align: right;
-  top: 8%;
+const WelcomingHeader2 = styled.p`
+  right: 1%;
+  top: 15%;
+  position: absolute;
 `
 
 const LogOutButton = styled.button`
@@ -273,13 +274,15 @@ const TopText = styled.h1`
 const OuterGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 25px;
+  // padding: 25px;
+  margin: 19px 0 0 0;
 `
 const LoadMoreDogsButton = styled.button`
+  margin: 0 15px 0 0;
   position: relative;
-  left: 43%;
+  left: 37%;
   top: 25.5%;
-  display: block;
+  display: inline;
   min-width: 150px;
   color: #fff;
   background-color: #0000FF;
@@ -296,7 +299,7 @@ const LoadMoreDogsButton = styled.button`
 const AppHeader = styled.h1`
   text-align: left;
   font-size: 50px;
-  margin: 25px;
+  margin: 0;
   color: white;
 `
 
