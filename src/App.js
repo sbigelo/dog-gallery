@@ -142,9 +142,9 @@ class App extends Component {
               <SubAppHeader>...Now With Cats!</SubAppHeader>
               <HeaderText>Click on any picture to put it into your favorite collection!</HeaderText>
             </HeaderBackground>  
-              <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
+              <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs</LoadMoreDogsButton>
               <LoadCatsButton onClick={this.handleLoadCats} >{this.state.afterLoadCatsText}</LoadCatsButton>
-              <button onClick={this.handleMixNMatch}>Load Both</button>
+              <DogsMarryingCatsButton onClick={this.handleMixNMatch}>Cats Marrying Dogs</DogsMarryingCatsButton>
                 <OuterGrid>{catsAndDogsLoad}</OuterGrid>
               <FavoriteBackground>
                 {favoriteCount}
@@ -186,17 +186,52 @@ const Footer = styled.div`
     text-decoration: none;
   }
 `
+const LoadMoreDogsButton = styled.button`
+  position: relative;
+  left: 33%;
+  display: inline;
+  min-width: 150px;
+  color: #fff;
+  background-color: #0000FF;
+  border-radius: 4px;   
+  padding:12px 12px;  
+  border: 1px solid #0000FF;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  &:hover {
+    background: #71b406;
+    border-color: #71b406;
+  }
+`
+const DogsMarryingCatsButton = styled.button`
+  position: relative;
+  left: 37%;
+  display: inline;
+  min-width: 150px;
+  border-radius: 4px;   
+  padding: 12px 12px;  
+  border: 1px solid #006400;
+  background: #006400;
+  color: #fff;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  margin: 5px 0 0 0;
+  &:hover {
+    background: #8B008B;
+    border-color: #8B008B;
+  }
+`
 
 const LoadCatsButton = styled.button`
   position: relative;
-  left: 39%;
-  top: 28%;
+  left: 35%;
   display: inline;
   min-width: 150px;
   border-radius: 4px;   
   padding: 12px 12px;  
   border: 1px solid #ff9900;
   background: #ff9900;
+  color: #fff;
   cursor: pointer;
   transition: ease-in-out 0.2s;
   margin: 5px 0 0 0;
@@ -205,33 +240,27 @@ const LoadCatsButton = styled.button`
     border-color: #ff0000;
   }
 `
-
 const SubAppHeader = styled.h3`
   color: white;
   padding: 0 0 0 25px;
 `
-
 const HeaderBackground = styled.div`
 background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 `
-
 const HeaderText = styled.h2`
   color: white;
   padding: 25px;
   max-width: 250px;
 `
-
 const FavoriteText = styled.h3`
   color: white;
   padding: 0px 0px 0px 25px;
 `
-
 const FavoriteBackground = styled.div`
 background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 `
-
 const WelcomingHeader1 = styled.p`
   right: 1%;
   top: 13%;
@@ -242,7 +271,6 @@ const WelcomingHeader2 = styled.p`
   top: 15%;
   position: absolute;
 `
-
 const LogOutButton = styled.button`
   position: absolute;  
   right: 10px;
@@ -263,11 +291,10 @@ const LogOutButton = styled.button`
     border-color: #71b406;
   }
 `
-
 const LogInButton = styled.button`
   position: fixed;
   left: 38%;
-  top: 26%;
+  top: max(26%);
   color: #fff;
   background-color: #0000FF;
   border-radius: 4px;   
@@ -284,37 +311,16 @@ const LogInButton = styled.button`
     border-color: #71b406;
   }
 `
-
 const TopText = styled.h1`
   font-size: 25px;
   color: white;
   padding: 25px 25px 0px 5px;
 `
-
 const OuterGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   // padding: 25px;
   margin: 19px 0 0 0;
-`
-const LoadMoreDogsButton = styled.button`
-  margin: 0 15px 0 0;
-  position: relative;
-  left: 37%;
-  top: 25.5%;
-  display: inline;
-  min-width: 150px;
-  color: #fff;
-  background-color: #0000FF;
-  border-radius: 4px;   
-  padding:12px 12px;  
-  border: 1px solid #0000FF;
-  cursor: pointer;
-  transition: ease-in-out 0.2s;
-  &:hover {
-    background: #71b406;
-    border-color: #71b406;
-  }
 `
 const AppHeader = styled.h1`
   text-align: left;
@@ -322,27 +328,24 @@ const AppHeader = styled.h1`
   margin: 0;
   color: white;
 `
-
 const LoginPageAppHeader = styled.div`
   position: fixed;
   left: 35%;
-  top: 5%;
+  top: min(50px, 5%);
   width: 25%;
   text-align: center;
   font-size: 50px;
   border-radius: 4px;   
   padding: 12px 12px;
 `
-
-
 const LogInBackground = styled.div`
   position: fixed; 
-  top: 0; 
+  top: 15px; 
   left: 0; 
   min-width: 100%;
   min-height: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
+  background-position: center top;
   background-image: url('https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80');
 `

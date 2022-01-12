@@ -41,4 +41,3 @@ const InnerGrid = styled.div`
         min-height: 200px;
     }
 `
-

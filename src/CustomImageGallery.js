@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import styled from "styled-components"
 import ReactPlayer from 'react-player'
 
-
-
 class CustomImageGallery extends Component {
 
     handleFavorite = (e) => {
@@ -44,7 +42,6 @@ const InnerGrid = styled.div`
         max-height: 200px;
         min-height: 200px;
     }
-
 `
 
 
