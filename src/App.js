@@ -10,12 +10,11 @@ import { GoogleLogout } from "react-google-login";
 class App extends Component {
 
     state = {
-      dog: [], 
       favoritedImages: [],
       userDetails: {},
       isUserLoggedIn: false,
-      cat: [],
-      afterLoadCatsText: 'Load Cats'
+      afterLoadCatsText: 'Load Cats',
+      catsAndDogs: []
     }
  
   responseGoogle = response => {
@@ -33,7 +32,7 @@ class App extends Component {
       fetch('https://random.dog/woof.json')
       .then(resp => resp.json())
       .then(data => this.setState({
-      dog: [...this.state.dog, data]
+      catsAndDogs: [...this.state.catsAndDogs, data]
     }))
     }
   }
@@ -42,33 +41,57 @@ class App extends Component {
     const URL = 'https://cataas.com/'
     const num = 12
     this.setState({
-      dog: [],
-      cat: [],
-      afterLoadCatsText: 'Load More Cats'
+      afterLoadCatsText: 'Load More Cats',
+      catsAndDogs: []
     })
     for (let i = 0; i < num; i++) {
       fetch(URL + 'cat?json=true')
       .then(resp => resp.json())
       .then(data => this.setState({
-        cat: [...this.state.cat, data]
+        catsAndDogs: [...this.state.catsAndDogs, data]
       }))
     }
   }
   
- 
   handleClick = () => {
     this.setState({
-      dog: [],
-      cat: []
+      catsAndDogs: []
     })
     const num = 12
+    const URL = 'https://random.dog/woof.json'
     for (let i = 0; i < num; i++) {
-      fetch('https://random.dog/woof.json')
+      fetch(URL)
         .then(resp => resp.json())
         .then(data => this.setState({
-          dog: [...this.state.dog, data]
+          catsAndDogs: [...this.state.catsAndDogs, data]
     }))
   }
+  }
+
+  handleMixNMatch = () => {
+    this.setState({
+      catsAndDogs: []
+    })
+    const num = 12
+    const dogURL = 'https://random.dog/woof.json'
+    const catURL = 'https://cataas.com/cat?json=true'
+    for(let i = 0; i < num; i++) {
+      let randomNum = Math.random()
+      if (randomNum >= .5) {
+        fetch(dogURL)
+          .then(resp => resp.json())
+          .then(data => this.setState({
+            catsAndDogs: [...this.state.catsAndDogs, data]
+          }))
+      } else {
+        fetch(catURL)
+          .then(resp => resp.json())
+          .then(data => this.setState({
+            catsAndDogs: [...this.state.catsAndDogs, data]
+          }))
+      }
+    }
+
   }
 
   handleFavorite = (e) => {
@@ -87,15 +110,12 @@ class App extends Component {
     })
   }
 
-
  
 
   render() {
-    let dogLoad = this.state.dog.map(doggo => <CustomImageGallery  imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
+    let catsAndDogsLoad = this.state.catsAndDogs.map(doggo => <CustomImageGallery  imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
 
     let allFavoritedPics = this.state.favoritedImages.map(pic => <FavoritedImages pic={pic} favoriteRemove={this.handleRemoveFavorite} />)
-
-    let catLoad = this.state.cat.map(cats => <CustomImageGallery catimgURL={cats.url} favoritePicture={this.handleFavorite} />)
 
     let favoriteCount = this.state.favoritedImages.length > 0 ? this.state.favoritedImages.length == 1 ? <TopText>You have {this.state.favoritedImages.length} favorite</TopText> : <TopText>You have {this.state.favoritedImages.length} favorites</TopText> : <TopText>No favorites yet</TopText>
 
@@ -124,8 +144,8 @@ class App extends Component {
             </HeaderBackground>  
               <LoadMoreDogsButton onClick={this.handleClick}>Load More Dogs!</LoadMoreDogsButton>
               <LoadCatsButton onClick={this.handleLoadCats} >{this.state.afterLoadCatsText}</LoadCatsButton>
-                <OuterGrid>{dogLoad}</OuterGrid>
-                <OuterGrid>{catLoad}</OuterGrid>
+              <button onClick={this.handleMixNMatch}>Load Both</button>
+                <OuterGrid>{catsAndDogsLoad}</OuterGrid>
               <FavoriteBackground>
                 {favoriteCount}
                 {clickOnToRemoveText}
