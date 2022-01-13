@@ -10,7 +10,7 @@ handleDelete = (e) => {
 
    render() {
        let card
-       this.props.pic.endsWith('mp4') ? card = <InnerGrid onClick={this.handleDelete} className='innerGrid' ><ReactPlayer volume='0' playing='true' loop='true' url={this.props.pic} style='' /> </InnerGrid> : card = <InnerGrid onClick={this.handleDelete} className='innerGrid'><img type="video/jpeg" src={this.props.pic}></img></InnerGrid>
+       this.props.pic.endsWith('mp4') ? card = <InnerGrid onClick={this.handleDelete} className='innerGrid' ><ReactPlayer volume={0} playing={true} loop={true} url={this.props.pic} style={{}} /> </InnerGrid> : card = <InnerGrid onClick={this.handleDelete} className='innerGrid'><img type="video/jpeg" src={this.props.pic} alt=''></img></InnerGrid>
     return(
         <div>
             {card}

@@ -9,14 +9,17 @@ import { GoogleLogout } from "react-google-login";
 
 class App extends Component {
 
-    state = {
+  constructor() {
+    super();
+    this.state = {
       favoritedImages: [],
       userDetails: {},
       isUserLoggedIn: false,
       afterLoadCatsText: 'Load Cats',
       catsAndDogs: []
     }
- 
+  }
+
   responseGoogle = response => {
     this.setState({ userDetails: response.profileObj, isUserLoggedIn: true });
   };
@@ -113,11 +116,11 @@ class App extends Component {
  
 
   render() {
-    let catsAndDogsLoad = this.state.catsAndDogs.map(doggo => <CustomImageGallery  imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
+    let catsAndDogsLoad = this.state.catsAndDogs.map(doggo => <CustomImageGallery key={doggo.url} imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
 
-    let allFavoritedPics = this.state.favoritedImages.map(pic => <FavoritedImages pic={pic} favoriteRemove={this.handleRemoveFavorite} />)
+    let allFavoritedPics = this.state.favoritedImages.map(pic => <FavoritedImages key={pic} pic={pic} favoriteRemove={this.handleRemoveFavorite} />)
 
-    let favoriteCount = this.state.favoritedImages.length > 0 ? this.state.favoritedImages.length == 1 ? <TopText>You have {this.state.favoritedImages.length} favorite</TopText> : <TopText>You have {this.state.favoritedImages.length} favorites</TopText> : <TopText>No favorites yet</TopText>
+    let favoriteCount = this.state.favoritedImages.length > 0 ? this.state.favoritedImages.length === 1 ? <TopText>You have {this.state.favoritedImages.length} favorite</TopText> : <TopText>You have {this.state.favoritedImages.length} favorites</TopText> : <TopText>No favorites yet</TopText>
 
     let clickOnToRemoveText = this.state.favoritedImages.length > 0 ? <FavoriteText>Click on any image to remove it</FavoriteText> : null
 
@@ -151,7 +154,7 @@ class App extends Component {
                 {clickOnToRemoveText}
                 <OuterGrid>{allFavoritedPics}</OuterGrid>
               </FavoriteBackground>
-            <Footer><a href="https://github.com/sbigelo/dog-gallery" target="_blank">Github</a></Footer>
+            <Footer><a href="https://github.com/sbigelo/dog-gallery" target="_blank" rel="noreferrer">Github</a></Footer>
             </div>)}
           {!this.state.isUserLoggedIn && ( 
             <LogInBackground>
