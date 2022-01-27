@@ -23,8 +23,8 @@ handleChange = (e) => {
 }
 
 handleSubmit = () => {
-    if (!this.state.checkForSingleSubmit) {
-        if (this.state.comments.length < 20) {this.setState({
+    if (this.state.submittedComments == '') {
+        if (this.state.comments.length <= 20) {this.setState({
         submittedComments: [...this.state.submittedComments, this.state.comments],
         checkForSingleSubmit: true
         }) 
@@ -34,9 +34,13 @@ handleSubmit = () => {
     } 
 }
 
-handleCommentDelete = () => {
-
+handleCommentDelete = (e) => {
+    this.setState({
+        submittedComments: this.state.submittedComments.filter(comment => comment !== e.target.innerText)
+    })
 }
+
+   
 
    render() {
        let card
@@ -48,7 +52,7 @@ handleCommentDelete = () => {
         <div>
             {card}
             <input onChange={this.handleChange} placeholder="Add a comment"></input><button onClick={this.handleSubmit}>Submit</button>
-            <Comments>{showComments}</Comments>
+            <Comments onClick={this.handleCommentDelete}>{showComments}</Comments>
         </div>
     )
    }
