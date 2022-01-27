@@ -5,6 +5,8 @@ import FavoritedImages from './FavoritedImages'
 // import { Routes, Route } from 'react-router-dom'
 import GoogleLogin from "react-google-login";
 import { GoogleLogout } from "react-google-login";
+// import NavBar from './NavBar'
+// import Test from './Test'
 
 
 class App extends Component {
@@ -116,7 +118,7 @@ class App extends Component {
  
 
   render() {
-    let catsAndDogsLoad = this.state.catsAndDogs.map(doggo => <CustomImageGallery key={doggo.url} imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
+    let catsAndDogsLoad = this.state.catsAndDogs.map((doggo, i) => <CustomImageGallery key={i} imgURL={doggo.url} favoritePicture={this.handleFavorite}/>)
 
     let allFavoritedPics = this.state.favoritedImages.map(pic => <FavoritedImages key={pic} pic={pic} favoriteRemove={this.handleRemoveFavorite} />)
 
@@ -126,6 +128,11 @@ class App extends Component {
 
       return (
           <div>
+            {/* <Test /> */}
+            {/* <NavBar /> */}
+            {/* <Routes>
+              <Route exact path='/test' component={Test} />
+            </Routes> */}
           {this.state.isUserLoggedIn && (<div> <WelcomingHeader1>
             Welcome {this.state.userDetails.givenName}{" "}
             {this.state.userDetails.familyName}
@@ -328,7 +335,7 @@ const OuterGrid = styled.div`
 const AppHeader = styled.h1`
   text-align: left;
   font-size: 50px;
-  margin: 0;
+  margin: 0 0 0 5px;
   color: white;
 `
 const LoginPageAppHeader = styled.div`
@@ -343,7 +350,7 @@ const LoginPageAppHeader = styled.div`
 `
 const LogInBackground = styled.div`
   position: fixed; 
-  top: 15px; 
+  top: 0px; 
   left: 0; 
   min-width: 100%;
   min-height: 100%;
